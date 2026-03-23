@@ -1,0 +1,7 @@
+t=int(input("Enter the number of testcases: "))
+for i in range(t):
+    N = int(input("Enter the number of tyres: "))  
+    if N % 4 != 0:
+        print("YES")
+    else:
+        print("NO")
