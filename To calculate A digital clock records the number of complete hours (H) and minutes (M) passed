@@ -1,0 +1,37 @@
+def solve_total_hours():
+    # Using a try-except to handle non-integer inputs gracefully
+    try:
+        T = int(input())
+        H_total = int(input())
+
+        # 1. Check Constraints
+        if H_total < 24 or H_total % 2 != 0 or T >= H_total:
+            print("INVALID INPUT")
+            return
+
+        # 2. Logic:
+        # Equation 1: D + H = T
+        # Equation 2: 24*D + H = H_total
+        # Subtracting Eq 1 from Eq 2 gives: 23*D = H_total - T
+        
+        dividend = H_total - T
+        divisor = 23
+        
+        # 3. Solve and Validate
+        if dividend % divisor == 0:
+            D = dividend // divisor
+            H = T - D
+            
+            # Final check: Results must be non-negative
+            if D >= 0 and H >= 0:
+                print(f"D = {D}, H = {H}")
+            else:
+                print("INVALID INPUT")
+        else:
+            # If the math doesn't result in a whole number
+            print("INVALID INPUT")
+
+    except ValueError:
+        print("INVALID INPUT")
+
+solve_total_hours()
