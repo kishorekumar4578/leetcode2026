@@ -1,0 +1,36 @@
+def calculate_work_stats():
+    try:
+        # Taking inputs
+        T = int(input("Enter T: "))
+        H_total = int(input("Enter H_total: "))
+
+        # Constraint Checks
+        if H_total < 24 or H_total % 2 != 0 or T >= H_total:
+            print("INVALID INPUT")
+            return
+
+        # Solving the linear equation:
+        # D + H = T  => H = T - D
+        # 24D + H = H_total
+        # 24D + T - D = H_total
+        # 23D = H_total - T
+        
+        diff = H_total - T
+        
+        # Check if a whole number of days exists
+        if diff % 23 == 0:
+            D = diff // 23
+            H = T - D
+            
+            # Ensure no negative values
+            if D >= 0 and H >= 0:
+                print(f"D = {D}, H = {H}")
+            else:
+                print("INVALID INPUT")
+        else:
+            print("INVALID INPUT")
+
+    except ValueError:
+        print("INVALID INPUT")
+
+calculate_work_stats()
